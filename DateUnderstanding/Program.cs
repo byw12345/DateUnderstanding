@@ -18,17 +18,32 @@ namespace DateUnderstanding
         private static string defaultCulture = Culture.English;
         private static List<string> testData = new List<string>()
         {
+            "2009",
             "2012",
-            "今晚8点",
-            "2007-1-1",
             "2007",
-            "2007-1"
+            "2007",
+            "2007"
+        };
+        private static List<string> testData2 = new List<string>()
+        {
+            "1",
+            "1",
+            "2",
+            "3",
+            "7"
         };
 
         static void Main(string[] args)
         {
             var test = new DateAnalyzer(defaultCulture);
             var result = test.DateSplit(testData);
+            var aaa = "2009年".ToUpper();
+            Table testTable = new Table();
+            testTable.Columns.Add(new Column("year", testData));
+            testTable.Columns.Add(new Column("month", testData2));
+            var r = test.GetDateHiberarchy(testTable);
+
+
         }
     }
 }
